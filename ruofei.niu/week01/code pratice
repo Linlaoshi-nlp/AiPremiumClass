@@ -1,0 +1,176 @@
+import numpy as np
+a = [1,2,3]
+b = np.array(a)
+c = np.array([1,2,3])
+print("b:",b)
+print("c:",c)
+  import numpy as np
+a = [1,2,3]
+b = np.array(a)
+c = np.array([1,2,3])
+print("b:",b)
+print("c:",c)
+a1 = np.array([(1,2,3),(4,5,6),(7,8,9)])
+a1
+a2 = np.zeros((5,3),dtype=int)
+a2
+a3 = np.ones((3,3),dtype=float)#创建一个三行三列，元素类型为float的数组
+a3
+a4 = np.arange(1,11,2)#创建一个从1开始，11结束，差值为2的等差数列
+a4
+  a = np.eye(4) #创建一个四行四列的单位矩阵
+a
+a5 = np.random.random(5)#生成指定长度，在[0,1)之间平均分布的随机数组
+a5
+a6 = np.random.normal(0,0.1,5)#生成其均值为0，标准差为0.1的随机数组
+a6
+a7 = np.array([(1,3,4),(5,8,7),(8,9,7)])
+a7[:2]#输出array数组的前两个数组
+a7[:,2]#输出每一行的第三个元素，组成一个数组
+a7[:,:2]#输出每一行每一列的前两个元素，组成一个数组
+a8 = np.array([(1,2,3),(3,4,5)])
+i,h = a8[:,1]
+print(i,h)
+a8 = np.array([(1,2,3),(3,4,5)])
+print("ndim:", a.ndim)
+print("shape:", a.shape)
+print("size", a.size)
+print("dtype", a.dtype)
+a9 = np.array([[0,2,3,4]])
+print(5 in a9)
+print(3 in a9)
+a8 = np.array([(1,2,3),(3,4,5)])
+a8.reshape(1,6)
+a8 = np.array([(1,2,3),(3,4,5)])
+a8.transpose()
+a8.T
+a8.flatten()
+array([1, 2, 3, 3, 4, 5])
+a = np.array([[1,2,3],[2,3,5]])
+a.shape
+#a = a[np.newaxis]#在前面加一个维度
+#输出
+#(1, 2, 3)
+a = a[:,np.newaxis,:]#在中间加一个维度
+#输出
+#(2, 1, 3)
+a.shape
+a = np.ones((2,2))
+b = np.array([(1,1),(3,3,)])
+print(a)
+print(b)
+print(a+b)
+print(a-b)
+print(a*b)
+print(a/b)
+print(a.sum())
+print(a.prod())
+import numpy as np
+a = np.array([5,2,1])
+print("mean:",a.mean())#平均数
+print("var:", a.var())#方差
+print("std:", a.std())#标准差
+print("max:", a.max())
+print("min:", a.min())
+a = np.array([1.2,2.2,3.5])
+print("argmax:",a.argmax())#最大的索引值
+print("argmin:",a.argmin())#最小的索引值
+print("ceil:",np.ceil(a))#取元素值的上限
+print("floor:",np.floor(a))#取元素值的下限
+print("rint:",np.rint(a))#四舍五入
+m1 = np.array([[1,2],[3,4]],dtype = np.float32)
+m2 = np.array([[5,6],[7,8]],dtype = np.float32)
+result_dot = np.dot(m1,m2)
+result_at = m1@m2
+print("矩阵 1")
+print(m1)
+print("矩阵 2")
+print(m2)
+print("使⽤ np.dot 得到的矩阵乘法结果:")
+print(result_dot)
+a = np.array([(1,2),(4,5),(1,1)])
+b = np.array([1,2])
+a+b
+import torch
+import numpy as np
+data = [[1,2],[3,4]]
+x_data = torch.tensor(data)
+x_data
+import numpy as np
+a = np.array([1,2,3])
+b = torch.from_numpy(a)
+b
+c = torch.tensor([1,2,3])
+d = torch.ones_like(c)# # 保留of x_data的属性,但里面的值全为1
+print("ones_like:",d)
+e = torch.rand_like(c,dtype=float)#覆盖 x_data的数据类型,里面的值为0-1的随机值
+print("rand_like",e)
+import torch
+shape = (2,3)
+rand_tensor = torch.rand(shape)
+ones_tensor = torch.ones(shape)
+zeros_tensor = torch.zeros(shape)
+print(f"Random Tensor: \n {rand_tensor} \n")
+print(f"Ones Tensor: \n {ones_tensor} \n")
+print(f"Zeros Tensor: \n {zeros_tensor}")
+m = torch.tensor([2,3],dtype=torch.double)
+n = torch.ones(5,3,dtype=torch.double)
+a = torch.rand_like(n,dtype=torch.float)
+print(a.size())
+# 均匀分布
+
+print(torch.rand(5,3))
+# 标准正态分布
+
+print(torch.randn(5,3))
+# 离散正态分布
+
+print(torch.normal(mean=.0,std=1.0,size=(5,3)))
+# 线性间隔向量(返回⼀个1维张量，包含在区间start和end上均匀间隔的steps个点)
+torch.linspace(start=1,end=10,steps=20)
+tensor = torch.rand(3,4)
+print(f"Shape of tensor: {tensor.shape}")
+print(f"Datatype of tensor: {tensor.dtype}")
+print(f"Device tensor is stored on: {tensor.device}")
+tensor = torch.ones(5,2)
+print("tensor原数组",tensor)
+print("tensor first row:",tensor[0])
+print("tensor first column:",tensor[:,0])
+print("tensor last column",tensor[:,-1])
+tensor1 = torch.ones(2,2)
+tensor2 = torch.zeros(2,2)
+tensor3 =torch.cat((tensor1,tensor2),dim = 0)#在行上进行拼接
+print(tensor3)
+tensor4=torch.cat((tensor1,tensor2),dim = 1)#在列上进行拼接
+print(tensor4)
+tensor = torch.arange(1,10,dtype=float).reshape(3,3)
+tensor
+y1 = tensor @ tensor.T
+y1
+y2 = tensor.matmul(tensor.T)
+y2
+y3 = torch.rand_like(tensor)
+torch.matmul(tensor,tensor.T,out=y3)
+print(y3)
+#输出
+# tensor([[ 14.,  32.,  50.],
+#         [ 32.,  77., 122.],
+#         [ 50., 122., 194.]], dtype=torch.float64)
+#上面是向量的内积
+#下面是向量的逐一相乘
+z1 = tensor * tensor
+z2 = tensor.mul(tensor)
+
+z3 = torch.rand_like(tensor)
+torch.mul(tensor, tensor, out=z3)
+agg = tensor.sum()
+print(type(agg))
+agg = agg.item()
+print(type(agg))
+print(tensor)
+tensor.add_(5)
+print(tensor)
+t = torch.ones(5)
+print(f"t: {t}")
+n = t.numpy()
+print(f"n: {n}")

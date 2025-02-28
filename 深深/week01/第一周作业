@@ -1,0 +1,119 @@
+import numpy as np
+a=[1,2,3]
+b=np.array(a)
+b
+a=np.array([1,2,3],int)
+a
+  a=np.array([(1,2,3),(4,5,6)])
+a
+  a=np.zeros((3,2,2),dtype=int)
+a
+  a=np.ones((3,2,2),dtype=int)
+a
+  a=np.arange(1,100,2)
+a
+  a=np.eye(5,3)
+a
+  a=np.random.random(9)
+a
+  mu,sigma=0,0.5
+np.random.normal(mu,sigma,8)
+    a=np.array([(1,2,3),(4,5,6),(7,8,9)])
+a
+a1=a[1:]
+a2=a[:-1]
+a3=a[-1]
+a4=a[:,:-1]
+a5=a[1:,:-1]
+print(a1)
+print(a2)   
+print(a3)
+print(a4)
+print(a5)
+    a=np.array([(1,2),(3,4)])
+a
+for i,j in a:
+    print(i,j)
+    a=np.array([(1,2),(3,4)])
+b=a.ndim
+c=a.shape
+d=a.dtype
+e=a.size
+print(b,c,d,e)
+    a=np.array([(1,2),(3,4)])
+print(8 in a )
+    a=np.ones([3,4])
+a
+a=a.reshape([6,2])
+a
+    a=np.ones([3,4])
+a=a.T
+a
+    a=np.ones([3,4])
+a=a.flatten()
+a
+    a=np.array([(1,2),(3,4)])
+b=np.ones((2,2))
+q=a+b
+w=a-b
+e=a*b
+r=a.sum()
+t=a.prod()
+aa=a.max()
+ad=a.min()
+aq=a.mean()
+az=a.std()
+print(q)
+print(w)
+print(e)
+print(r)
+print(t)
+print(aa)
+print(az)
+print(ad)
+print(aq)
+    a=np.array([(1,2),(3,4),(5,6),(7,8)])
+b=np.array([(1,2,3),(3,4,5)])
+a
+b
+c=np.dot(a,b)   
+c
+    a=np.array([(1,2,3),(3,4,5),(5,6,7),(7,8,9)])
+b=np.ones((4,3))
+a+b
+    data=[[1,2],[2,3]]  
+a_data=torch.tensor(data)
+a_data
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  

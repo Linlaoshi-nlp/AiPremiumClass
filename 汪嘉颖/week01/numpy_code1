@@ -1,0 +1,121 @@
+# %%
+import numpy as np
+a = [3,3,1]
+b = np.array(a)
+b
+
+# %%
+import numpy as np
+a = np.array([1,2,3,4,5],complex)
+a
+
+# %%
+import numpy as np
+a = np.array([(1,2,3,4,5),(6,7,8,9,10),(11,12,13,14,15)])
+a[:2]
+a[:,:2]
+a[2,2]
+# for i in a:
+#     print(i)
+
+
+for i,j,k,l,m in a:
+    print(i*j*k*l*m)
+
+print(a.ndim)
+print(a.shape)
+print(a.size)
+print(a.dtype)
+
+# %%
+import numpy as np
+a = np.zeros((8,9),bool)
+a
+
+# %%
+import numpy as np
+a = np.ones((10,9),bool)
+a
+
+# %%
+import numpy as np
+a = np.arange(1,100,10)
+a
+
+# %%
+import numpy as np
+a = np.eye(8)
+a
+np.random.random(10)
+np.random.normal(1,0.5,6)
+
+# %%
+import numpy as np
+a = np.array([(6,7,8,9,10),(11,12,13,14,15)])
+print(15 in a)
+
+# %%
+import numpy as np
+a = np.zeros([2,3,4])
+a.reshape(24)
+
+# %%
+import numpy as np
+a = np.array([(1,2,3),(4,5,6),(7,8,9)])
+a.transpose()
+a.T
+
+# %%
+import numpy as np
+a = np.array([(1,2,3),(4,5,6),(7,8,9)])
+a.flatten()
+
+# %%
+import numpy as np
+a = np.array([1,2,3])
+a.shape
+a = a[:,np.newaxis]
+a.shape
+
+# %%
+import numpy as np
+a = np.ones((3,3))
+b = np.array([(1,1,1),(2,2,2),(3,3,3)])
+print(a)
+print(b)
+print(a+b)
+print(a-b)
+print(a*b)
+print(a/b)
+print(a.sum())
+print(b.prod())
+print(a.max())
+print(a.min())
+print(a.mean())
+print(a.std())
+print(b.argmax())
+print(b.argmin())
+
+
+# %%
+import numpy as np
+a = np.array([(1.1,2.2,3.3),(4.4,5.5,6.6)])
+print(np.ceil(a))
+print(np.floor(a))
+print(np.rint(a))
+
+
+# %%
+import numpy as np
+a = np.array([2,7,1,5,3,6,4])
+a.sort()
+a
+
+# %%
+import numpy as np
+a = np.array([(1,2), (2,2), (3,3), (4,4)]) 
+a.shape
+b = np.array([-1,1])
+b.shape
+
+

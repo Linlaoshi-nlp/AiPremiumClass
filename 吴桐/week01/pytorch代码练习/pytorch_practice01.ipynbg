@@ -1,0 +1,168 @@
+import numpy as np
+a=[1,2,3]
+b=np.array(a)
+b
+#%%
+a = np.array([(1,2,3), (4,5,6), (7,8,9)])
+b=np.zeros((3,4),dtype=int)
+c=np.ones((3,4),dtype=float)
+print(c)
+#%%
+d = np.arange(0,12,2).reshape(2,3)#arange可定义起点和终点和步长
+a = np.eye(4,dtype=int)#单位矩阵
+b = np.random.random((3,4)) #随机生成3*4的矩阵，大小为[0-1)
+mu,sigma = 0,0.1
+c = np.random.normal(mu,sigma,(3,4))#⽣成指定⻓度，符合正态分布的随机数组，指定其均值为 0，标准差为 0.1：
+print(c)
+#%% md
+numpy数组的访问：⽀持切⽚操作，我们可以切⽚每⼀个维度，索引每⼀个维度
+#%%
+a = np.arange(0,12,2).reshape(2,3)
+print(a)
+a[0:1,1:] #切片依然到不了右端点
+#%% md
+numpy数组的遍历
+#%%
+a = np.arange(0,12,2).reshape(2,3) #多维矩阵的遍历
+'''
+for i,j,k in a:
+    print(f"{i} {j} {k}")
+'''
+print(a.ndim) #数组的秩
+print(a.shape)
+print(a.size) #元素个数
+print(a.dtype) 
+#%% md
+NumPy 数组的基本操作
+
+#%%
+a = np.arange(0,6)
+print(3 in a) #检测元素是否存在在数组中
+print(5 in a)
+b = a.reshape(2,3) #注意reshape函数原矩阵是不变的，需要新矩阵来接收它
+print(b)
+print(b.flatten())
+#%%
+a = np.array([1,2,3])
+a=a[:,np.newaxis]
+a.shape
+print(a)
+
+#%% md
+numpy的数学操作
+#%%
+a = np.array([5, 3, 3])
+a.sum()
+a.prod()
+a.mean()
+a.var()
+a.std()
+a.max()
+a.min()
+a.argmax()#最大值的下标
+a.argmin()
+a.sort()
+print(a)
+# np.floor,ceil,rint 上取整和下取整
+#%%
+m1 = np.array([[1, 2],[3, 4]],dtype=np.float32)
+m2 = np.array([[5, 6],[7, 8]],dtype=np.float32)
+print(m1@m2)#矩阵相乘np.dot(m1,m2)
+#%% md
+pytorch-张量的创建练习
+#%%
+import torch
+a=[1,2,3]
+a_matrix = np.array(a)
+b=torch.tensor(a) #从数据中创建张量
+b=torch.from_numpy(a_matrix) #从numpy矩阵中创建张量
+c=torch.ones_like(b) #从另一个张量里创建
+d= torch.rand_like(b, dtype=torch.float) # 覆盖 x_data的数据类型
+e=torch.rand((2,3)) #生成维度为2，3的随机张量
+# 通过已知张量维度，创建新张量
+f=torch.rand_like(e,dtype=torch.float32)
+f.size() #f的形状
+#%%
+# 均匀分布
+print(torch.rand(5,3))
+# 标准正态分布
+print(torch.randn(5,3))
+# 离散正态分布
+print(torch.normal(mean=.0,std=1.0,size=(5,3)))
+# 线性间隔向量(返回一个1维张量，包含在区间start和end上均匀间隔的steps个点)
+print(torch.linspace(start=1,end=10,steps=21))
+tensor = torch.randn(5,3)
+# 检查pytorch是否支持GPU
+if torch.cuda.is_available():
+    device = torch.device("cuda")
+    tensor = tensor.to(device)
+
+print(tensor)
+print(tensor.device)
+#%%
+tensor = torch.ones(4, 4)
+print('First row: ', tensor[0])
+print('First column: ', tensor[:, 0])
+print('Last column:', tensor[..., -1])# ...表示前面所有的维度，-1表示最后一维
+tensor[:,1] = 0
+print(tensor)
+#%%
+t1 = torch.cat([tensor, tensor, tensor], dim=0)#dim表示从哪一维开始拼接
+print(t1 * 3)
+print(t1.shape)
+#%%
+import torch
+tensor = torch.arange(1,10, dtype=torch.float32).reshape(3, 3)
+
+# 计算两个张量之间矩阵乘法的几种方式。 y1, y2, y3 最后的值是一样的 dot
+y1 = tensor @ tensor.T
+y2 = tensor.mul(tensor.T)
+
+#print(y1)
+#print(y2)
+y3 = torch.rand_like(tensor)
+torch.mul(tensor, tensor.T, out=y3) #乘积结果让y3接收
+# print(y3)
+# 计算张量逐元素相乘的几种方法。 z1, z2, z3 最后的值是一样的。
+z1 = tensor * tensor
+z2 = tensor.matmul(tensor)
+
+z3 = torch.rand_like(tensor)
+torch.mul(tensor, tensor, out=z3)
+
+print(z1)
+print(z3)
+#%%
+agg = tensor.sum()
+agg_item = agg.item() #将张量的聚合值转换成基本数据类型
+print(agg_item, type(agg_item))
+#%%
+#In-place操作把计算结果存储到当前操作数中的操作就称为就地操作。含义和pandas中inPlace参数的含义⼀样。pytorch中，这些操作是由带有下划线 _ 后缀的函数表⽰。
+tensor = torch.arange(1,10).reshape(3,3)
+tensor.add_(5)
+print(tensor)
+#%%
+n = np.ones(5)
+t = torch.from_numpy(n)
+np.add(n, 1, out=n)
+print(f"t: {t}")#因为其指向的都是同一片内存空间，所以一个变化另一个也会变化
+print(f"n: {n}")
+
+#%%
+import torch
+from torchviz import make_dot
+
+# 定义矩阵 A，向量 b 和常数 c
+A = torch.randn(1, 5,requires_grad=True) 
+b = torch.randn(10,requires_grad=True)
+c = torch.randn(1,requires_grad=True)
+x = torch.randn(10, requires_grad=True)
+
+
+# 计算 x^T * A + b * x + c
+result = torch.matmul(A, x.T) + torch.matmul(b, x) + c
+
+# 生成计算图节点
+dot = make_dot(result, params={'A': A, 'b': b, 'c': c, 'x': x})
+# 绘制计算图
+dot.render('expression', format='png', cleanup=True, view=False)

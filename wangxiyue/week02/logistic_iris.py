@@ -1,7 +1,11 @@
+
 from operator import truediv
 
 import numpy as np
 import  matplotlib.pyplot as plt
+
+import numpy as np
+
 from sklearn.datasets import load_iris
 from sklearn.model_selection import train_test_split
 
@@ -32,18 +36,35 @@ def initData():
     x1, y1 = load_iris(return_X_y=True)
     x1=x1[:100]
     y1=y1[:100]
+
     return train_test_split(x1,y1,test_size=0.5,shuffle=True)
+
+    return train_test_split(x1,y1,test_size=0.2,shuffle=True)
+
 
 # 模型 得出y的 概率
 def calc_model(xTrain,theta,bias):
     #线性运算
     z=np.dot(theta,xTrain.T)+bias
     #sugmoid
+
     y_hat = 1 / (1 + np.exp(-z)) # 0，1 概率分布
+
+    # y_hat = 1 / (1 + np.exp(-z)) # 0，1 概率分布
+    #softmax
+    y_hat = np.exp(z) / len(z)
+
+
     return y_hat
 
 # epsilon : 极小值，防止y_hat 出现 0
 def calc_loss(yTrain,y_hat,epsilon):
+
+
+    #多分类交叉熵损失
+    # num_class = yTrain.shape[1]
+    # return -np.mean(np.sum(yTrain * np.log(y_hat)))
+
     return -yTrain * np.log(y_hat+epsilon) - (1-yTrain) * np.log(1-y_hat+epsilon)
 
 # 梯度计算(得出 增量 斜率 和 截距)
@@ -64,7 +85,11 @@ if __name__ == '__main__':
     theta = np.random.randn(1,4)  # shape (1,10)
     bias = 0
     # 学习率
+
     lr = 0.008
+
+    lr = 0.001
+
     # 最大训练批次
     epochs = 5000
     #极小值
@@ -84,7 +109,11 @@ if __name__ == '__main__':
         bias = bias - lr * delta_bias
 
         # print(theta,bias)
+
         if i % 50 == 0:
+
+        if i % 10 == 0:
+
             # 求准确率
             acc = np.mean(np.round(y_hat) == yTrain)
             print(f"epoch:{i} , loss:{np.mean(calc_loss(yTrain, y_hat,epsilon))}  , acc : {acc}")

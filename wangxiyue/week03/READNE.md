@@ -23,7 +23,6 @@
 1. [ ] # 课上重要知识点
 
 
-
 # 作业
 
 
@@ -31,4 +30,30 @@
 ## 数学问题 
 
 链式法则 - 微积分求导
+
+前向计算 - forward
+反向传播 - backward
+
+
+
+# 作业
+
+`torch.set_default_device(device)`
+
+`sudo nvidia-smi -pm 1`
+
+torch.nn.Modellist([
+
+])
+->
+Class CustomModel(nn.Module):
+
+
+
+## 数学问题 
+
+链式法则 - 微积分求导
+链式求导公式
+
+
 

@@ -14,3 +14,13 @@
 /models/
 /runs/
 .bin
+=======
+.idea
+runs
+couplet
+__pycache__
+*.bin
+*.csv
+*.json
+*.pth
+
